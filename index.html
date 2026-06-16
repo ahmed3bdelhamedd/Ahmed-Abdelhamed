@@ -3,16 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ahmed Abdelhamed | IT & Data Analyst Portfolio</title>
+<title>Ahmed Abdelhamed | Data Analyst</title>
+<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<!-- FontAwesome Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
-    --bg:      #050811;
-    --surface: #0a1120;
-    --border:  #16253b;
+    --bg:      #080d14;
+    --surface: #0e1620;
+    --border:  #1a2535;
     --accent:  #00c2ff;
     --accent2: #7c3aed;
     --text:    #e2e8f0;
@@ -26,7 +28,6 @@
   /* SCROLL PROGRESS BAR */
   #scroll-progress {
     position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent2)); width: 0%; z-index: 101;
-    transition: width 0.1s ease;
   }
 
   /* NAV */
@@ -34,7 +35,7 @@
     position: fixed; top: 0; width: 100%; z-index: 100;
     display: flex; justify-content: space-between; align-items: center;
     padding: 18px 8%;
-    background: rgba(5, 8, 17, 0.85);
+    background: rgba(8,13,20,.85);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
     transition: all 0.3s ease;
@@ -51,6 +52,7 @@
   .nav-links a:hover::after { width: 100%; }
   .nav-links a:hover { color: var(--text); }
   
+  /* Menu Toggle for Mobile */
   .menu-toggle { display: none; color: var(--text); font-size: 20px; cursor: pointer; }
 
   /* HERO */
@@ -64,7 +66,7 @@
                 radial-gradient(ellipse 40% 40% at 80% 60%, rgba(124,58,237,.08) 0%, transparent 60%);
     pointer-events: none;
   }
-  .hero-inner { display: grid; grid-template-columns: 1fr auto; gap: 60px; align-items: center; max-width: 1000px; width: 100%; animation: fadeInUp 1s ease-out; }
+  .hero-inner { display: grid; grid-template-columns: 1fr auto; gap: 60px; align-items: center; max-width: 1000px; width: 100%; cubic-bezier(0.16, 1, 0.3, 1); animation: fadeInUp 1s ease-out; }
   
   @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(30px); }
@@ -93,23 +95,19 @@
   .btn-cv { background: transparent; color: var(--accent); border: 1px solid rgba(0,194,255,.4); cursor: pointer; }
   .btn-cv:hover { background: rgba(0,194,255,.08); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,194,255,0.05); }
 
-  /* AVATAR STYLE MAPPED TO PHOTO */
+  /* AVATAR */
   .avatar-wrap { position: relative; flex-shrink: 0; }
   .avatar-ring { 
-    width: 260px; height: 260px; border-radius: 50%; padding: 4px; 
+    width: 230px; height: 230px; border-radius: 50%; padding: 4px; 
     background: linear-gradient(135deg, var(--accent), var(--accent2)); 
     box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 30px rgba(0,194,255,0.15);
     transition: transform 0.5s ease;
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
   }
   .avatar-ring:hover { transform: scale(1.03) rotate(2deg); }
-  .avatar-ring img {
-    width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: center; display: block; background: var(--surface);
-  }
+  .avatar-ring img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: top center; display: block; background: var(--surface); }
 
   /* SECTIONS */
-  section { padding: 100px 8%; max-width: 1200px; margin: 0 auto; }
+  section { padding: 100px 8%; }
   .section-label { font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; display: block; }
   .section-title { font-family: var(--display); font-size: clamp(28px,4vw,40px); font-weight: 700; letter-spacing: -1px; color: #fff; margin-bottom: 50px; }
   .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
@@ -121,47 +119,45 @@
   .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px; transition: all 0.3s ease; }
   .stat-card:hover { border-color: rgba(124,58,237,0.3); transform: translateY(-2px); }
-  .stat-card .num { font-family: var(--display); font-size: 32px; font-weight: 700; color: var(--accent); line-height: 1; }
+  .stat-card .num { font-family: var(--display); font-size: 36px; font-weight: 700; color: var(--accent); line-height: 1; }
   .stat-card .lbl { font-size: 13px; color: var(--muted); margin-top: 6px; font-weight: 500; }
 
-  /* EXPERIENCE TIMELINE */
-  #experience-section { background: var(--surface); width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; padding: 100px 8%; }
-  .exp-grid { display: flex; flex-direction: column; gap: 24px; max-width: 850px; margin: 0 auto; }
-  .exp-card { background: var(--bg); border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; display: grid; grid-template-columns: auto 1fr; gap: 20px; }
+  /* EXPERIENCE & PROJECTS */
+  #experience, #projects { background: var(--surface); }
+  .exp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 20px; }
+  .exp-card { background: var(--bg); border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; }
   .exp-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 0; background: var(--accent); transition: height 0.3s ease; }
   .exp-card:hover::before { height: 100%; }
-  .exp-card:hover { border-color: var(--border); transform: translateY(-4px); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
-  .exp-icon { width: 48px; height: 48px; border-radius: 12px; background: rgba(0,194,255,.06); border: 1px solid rgba(0,194,255,.15); display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--accent); }
-  .exp-content h3 { font-family: var(--display); font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 2px; }
-  .exp-content .company { font-size: 14px; color: var(--accent); font-weight: 500; margin-bottom: 4px; }
-  .exp-content .period { font-size: 12px; color: var(--muted); display: block; margin-bottom: 12px; }
-  .exp-content .desc { font-size: 14px; color: #94a3b8; line-height: 1.6; }
-  .exp-content .desc ul { margin-left: 20px; margin-top: 8px; }
+  .exp-card:hover { border-color: var(--border); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+  .exp-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(0,194,255,.06); border: 1px solid rgba(0,194,255,.15); display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 18px; color: var(--accent); }
+  .exp-card h3 { font-family: var(--display); font-size: 17px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+  .exp-card .role { font-size: 14px; color: var(--accent); font-weight: 500; margin-bottom: 6px; }
+  .exp-card .period { font-size: 12px; color: var(--muted); display: block; margin-bottom: 12px; }
+  .exp-card .desc { font-size: 14px; color: #74859a; line-height: 1.6; }
 
-  /* SKILLS CATEGORIES */
-  .skills-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-  .skills-group h3 { font-family: var(--display); font-size: 18px; color: #fff; margin-bottom: 20px; font-weight: 600; display: flex; align-items: center; gap: 10px; }
-  .skills-group h3 i { color: var(--accent); }
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px,1fr)); gap: 12px; }
+  /* SKILLS */
+  #skills { background: var(--bg); }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px,1fr)); gap: 14px; }
   .skill-pill { 
-    background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; 
-    display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; 
-    color: var(--text); transition: all 0.25s ease;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; 
+    display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; 
+    color: var(--text); transition: all 0.25s ease; cursor: default;
   }
-  .skill-pill i { font-size: 14px; color: var(--accent); }
-  .skill-pill:hover { border-color: var(--accent2); transform: translateY(-2px); background: rgba(124,58,237,0.03); }
+  .skill-pill i { font-size: 20px; color: var(--muted); transition: color 0.25s ease; }
+  .skill-pill:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,194,255,0.05); }
+  .skill-pill:hover i { color: var(--accent); }
 
   /* EDUCATION */
-  #education-section { background: var(--surface); width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; padding: 100px 8%; }
-  .edu-container { max-width: 850px; margin: 0 auto; }
-  .edu-card { background: var(--bg); border: 1px solid var(--border); border-radius: 16px; padding: 32px; position: relative; }
+  #education { background: var(--surface); }
+  .edu-card { background: var(--bg); border: 1px solid var(--border); border-radius: 16px; padding: 32px; max-width: 750px; position: relative; }
   .edu-card h3 { font-family: var(--display); font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 6px; }
   .edu-card .school { color: var(--accent); font-size: 15px; font-weight: 500; margin-bottom: 4px; }
   .edu-card .period { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
   .edu-card .gpa { display: inline-flex; align-items: center; gap: 6px; background: rgba(0,194,255,.08); border: 1px solid rgba(0,194,255,.2); border-radius: 20px; padding: 6px 16px; font-size: 12px; color: var(--accent); font-weight: 600; margin-bottom: 16px; }
-  .edu-card .activities { margin-top: 14px; font-size: 14px; color: #94a3b8; }
+  .edu-card p { font-size: 14px; color: #74859a; }
 
   /* CONTACT */
+  #contact { background: var(--bg); }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
   .contact-text { color: #94a3b8; font-size: 16px; }
   .contact-text p { margin-bottom: 28px; }
@@ -185,9 +181,9 @@
     .hero-bio { margin: 0 auto 32px; }
     .hero-actions { justify-content: center; }
     #about .about-grid { grid-template-columns: 1fr; gap: 40px; }
-    .skills-container { grid-template-columns: 1fr; gap: 30px; }
     .contact-grid { grid-template-columns: 1fr; gap: 40px; }
     
+    /* Mobile Menu Logic */
     .menu-toggle { display: block; }
     .nav-links { 
       position: fixed; top: 68px; left: 0; width: 100%; background: var(--bg); 
@@ -196,223 +192,233 @@
     }
     .nav-links.active { display: flex; }
     .nav-links a { margin: 12px 0; font-size: 15px; }
-    #experience-section, #education-section { padding: 80px 5%; }
   }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 </style>
 </head>
 <body>
 
 <div id="scroll-progress"></div>
 
+<!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">AHMED</a>
+  <a href="#" class="nav-logo">AA</a>
   <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
   <div class="nav-links" id="nav-menu">
     <a href="#about">About</a>
     <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
     <a href="#education">Education</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
 
-<!-- HERO SECTION -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
     <div>
       <div class="hero-tag"><i class="fas fa-circle"></i> Open to Opportunities</div>
       <h1>Ahmed<br>Abdelhamed</h1>
-      <p class="hero-role">Information Technology &amp; Data Analysis Professional</p>
+      <p class="hero-role">Data Analyst &amp; Business Intelligence Enthusiast</p>
       <p class="hero-bio">
-        Specialist in Business Information Systems with a solid background combining banking operations, financial auditing, data entry, and data analysis. Expert at resolving complex technical challenges and optimizing organizational workflows.
+        Business Information Systems student with hands-on experience in banking,
+        accounting, and data analysis. Passionate about transforming raw data into
+        clear, actionable insights.
       </p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="mailto:ahmed3bdelhamedwork@gmail.com"><i class="fas fa-envelope"></i> Contact Me</a>
+        <a class="btn btn-primary" href="mailto:ahmed3bdelhamedwork@gmail.com"><i class="fas fa-envelope"></i> Email Me</a>
         <a class="btn btn-ghost" href="https://www.linkedin.com/in/ahmed3bdelhamed/" target="_blank">LinkedIn <i class="fas fa-arrow-up-right-from-square" style="font-size: 11px;"></i></a>
-        <button class="btn btn-cv" onclick="alert('Downloading CV...')"><i class="fas fa-download"></i> CV Profile</button>
+        <!-- Updated CV Button -->
+        <a class="btn btn-cv" href="assets/Ahmed_Abdelhamed_CV.pdf" download="Ahmed_Abdelhamed_CV.pdf">
+          <i class="fas fa-download"></i> Download CV
+        </a>
       </div>
     </div>
     <div class="avatar-wrap">
       <div class="avatar-ring">
-        <img src="724306289_2281345226003407_6721593860695405504_n.jpg" alt="Ahmed Abdelhamed">
+        <!-- Updated Image Tag. Make sure to place your image in the same folder and rename it accordingly -->
+        <img src="profile-image.jpg" alt="Ahmed Abdelhamed">
       </div>
     </div>
   </div>
 </section>
 
+<!-- DIVIDER -->
 <hr class="divider">
 
-<!-- ABOUT SECTION -->
+<!-- ABOUT -->
 <section id="about">
-  <span class="section-label">Introduction</span>
+  <span class="section-label">Biography</span>
   <h2 class="section-title">About Me</h2>
   <div class="about-grid">
     <div class="about-text">
-      <p>
-        I am a highly analytical and technical professional holding a Bachelor's degree in Business Information Systems. My career spans crucial functions including back-office banking operations, rigorous financial auditing, structured data entry, and impactful data analysis.
-      </p>
-      <p>
-        Bridging the gap between pure IT infrastructure and corporate business logic is where I thrive. I enjoy breaking down complex, chaotic datasets into actionable insights, and establishing streamlined internal systems that eliminate organizational bottlenecks.
-      </p>
+      <p>I am a highly motivated Business Information Systems student with a diverse background encompassing data analysis, accounting, and banking operations. My unique combination of financial acumen and technical skills allows me to bridge the gap between complex data and strategic business decisions.</p>
+      <p>I thrive on uncovering hidden patterns in datasets, building automated reporting systems, and delivering insights that drive efficiency and growth.</p>
     </div>
     <div class="about-stats">
       <div class="stat-card">
-        <div class="num">3+</div>
-        <div class="lbl">Years Core Domain Experience</div>
+        <div class="num">1+</div>
+        <div class="lbl">Years Experience</div>
       </div>
       <div class="stat-card">
-        <div class="num">100%</div>
-        <div class="lbl">Data Accuracy &amp; Integrity Rate</div>
+        <div class="num">5+</div>
+        <div class="lbl">Projects Completed</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EXPERIENCE SECTION -->
-<div id="experience-section">
-  <section id="experience">
-    <span class="section-label">The Journey</span>
-    <h2 class="section-title">Work Experience</h2>
-    <div class="exp-grid">
-      
-      <div class="exp-card">
-        <div class="exp-icon"><i class="fas fa-chart-line"></i></div>
-        <div class="exp-content">
-          <h3>Data &amp; Operations Specialist</h3>
-          <div class="company">Financial &amp; Banking Operations</div>
-          <span class="period">Contract / Full-time Roles</span>
-          <p class="desc">
-            Managed robust back-office workflows, validated high-volume financial data entries, and assisted internal auditing teams to ensure strict compliance and absolute platform integrity.
-            <ul>
-              <li>Streamlined transactional data input pipelines, reducing entry error margins down significantly.</li>
-              <li>Utilized Advanced Excel structures to clean, reconcile, and audit recurring financial reports.</li>
-            </ul>
-          </p>
-        </div>
-      </div>
+<!-- DIVIDER -->
+<hr class="divider">
 
-      <div class="exp-card">
-        <div class="exp-icon"><i class="fas fa-database"></i></div>
-        <div class="exp-content">
-          <h3>Data Analyst &amp; IT Support Associate</h3>
-          <div class="company">Enterprise Tech Infrastructure</div>
-          <span class="period">Freelance / Project-based</span>
-          <p class="desc">
-            Rendered hardware, networking, and software support for end-users while building intuitive database queries and visualization structures to help management map internal asset distributions.
-          </p>
-        </div>
-      </div>
-
+<!-- EXPERIENCE -->
+<section id="experience">
+  <span class="section-label">Journey</span>
+  <h2 class="section-title">Experience</h2>
+  <div class="exp-grid">
+    <div class="exp-card">
+      <div class="exp-icon"><i class="fas fa-university"></i></div>
+      <h3>Banque Misr</h3>
+      <div class="role">Trainee</div>
+      <span class="period">Aug 2025 - Sep 2025</span>
+      <p class="desc">Gained valuable insights into banking operations, customer financial structures, and foundational risk assessment methodologies.</p>
     </div>
-  </section>
-</div>
+    <div class="exp-card">
+      <div class="exp-icon"><i class="fas fa-calculator"></i></div>
+      <h3>Accounting Training</h3>
+      <div class="role">Student Trainee</div>
+      <span class="period">Jul 2024 - Aug 2024</span>
+      <p class="desc">Developed practical expertise in managing general ledgers, financial reporting, and applying accounting principles to business scenarios.</p>
+    </div>
+    <div class="exp-card">
+      <div class="exp-icon"><i class="fas fa-chart-pie"></i></div>
+      <h3>Freelance / Academic</h3>
+      <div class="role">Data Analyst</div>
+      <span class="period">2024 - Present</span>
+      <p class="desc">Successfully executed data analysis projects by processing, cleaning, and visualizing data to solve real-world problems.</p>
+    </div>
+  </div>
+</section>
 
-<!-- SKILLS SECTION -->
+<!-- DIVIDER -->
+<hr class="divider">
+
+<!-- NEW PROJECTS SECTION -->
+<section id="projects">
+  <span class="section-label">Portfolio</span>
+  <h2 class="section-title">Projects</h2>
+  <div class="exp-grid">
+    <div class="exp-card">
+      <div class="exp-icon"><i class="fas fa-chart-line"></i></div>
+      <h3>Sales Performance Dashboard</h3>
+      <div class="role">Power BI & Excel</div>
+      <p class="desc">Designed an interactive dashboard to track regional sales KPIs, helping management visualize trends and identify revenue opportunities.</p>
+    </div>
+    <div class="exp-card">
+      <div class="exp-icon"><i class="fas fa-database"></i></div>
+      <h3>Customer Data Analysis</h3>
+      <div class="role">Python & SQL</div>
+      <p class="desc">Cleaned and analyzed a comprehensive dataset to uncover customer behavior patterns, utilizing Pandas and SQL queries for data extraction.</p>
+    </div>
+    <div class="exp-card">
+      <div class="exp-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+      <h3>Financial Reporting Automation</h3>
+      <div class="role">Advanced Excel</div>
+      <p class="desc">Automated weekly financial reporting processes using advanced formulas and macros, significantly reducing manual data entry time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<hr class="divider">
+
+<!-- SKILLS -->
 <section id="skills">
   <span class="section-label">Expertise</span>
-  <h2 class="section-title">Technical Toolstack</h2>
-  <div class="skills-container">
-    
-    <div class="skills-group">
-      <h3><i class="fas fa-calculator"></i> Data Analysis &amp; Systems</h3>
-      <div class="skills-grid">
-        <div class="skill-pill"><i class="fas fa-file-excel"></i> Adv. Excel</div>
-        <div class="skill-pill"><i class="fas fa-server"></i> SQL Basics</div>
-        <div class="skill-pill"><i class="fas fa-chart-bar"></i> Power BI / Tableau</div>
-        <div class="skill-pill"><i class="fas fa-network-wired"></i> ERP Systems</div>
-        <div class="skill-pill"><i class="fas fa-shield-alt"></i> Data Auditing</div>
-      </div>
-    </div>
-
-    <div class="skills-group">
-      <h3><i class="fas fa-laptop-code"></i> IT Infrastructure &amp; Soft Skills</h3>
-      <div class="skills-grid">
-        <div class="skill-pill"><i class="fas fa-tools"></i> Tech Support</div>
-        <div class="skill-pill"><i class="fas fa-desktop"></i> OS Deployment</div>
-        <div class="skill-pill"><i class="fas fa-brain"></i> Analytical Thinking</div>
-        <div class="skill-pill"><i class="fas fa-comments"></i> Team Sync</div>
-        <div class="skill-pill"><i class="fas fa-tasks"></i> Workflow Optimization</div>
-      </div>
-    </div>
-
+  <h2 class="section-title">Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-pill"><i class="fab fa-microsoft"></i> Excel (Advanced)</div>
+    <div class="skill-pill"><i class="fas fa-chart-bar"></i> Power BI</div>
+    <div class="skill-pill"><i class="fab fa-python"></i> Python</div>
+    <div class="skill-pill"><i class="fas fa-database"></i> SQL</div>
+    <div class="skill-pill"><i class="fas fa-chart-line"></i> Data Analysis</div>
+    <div class="skill-pill"><i class="fas fa-calculator"></i> Financial Accounting</div>
+    <div class="skill-pill"><i class="fas fa-comments"></i> Communication</div>
+    <div class="skill-pill"><i class="fas fa-lightbulb"></i> Problem Solving</div>
   </div>
 </section>
 
-<!-- EDUCATION SECTION -->
-<div id="education-section">
-  <section id="education">
-    <span class="section-label">Qualifications</span>
-    <h2 class="section-title">Education</h2>
-    <div class="edu-container">
-      <div class="edu-card">
-        <h3>Bachelor of Business Information Systems (BIS)</h3>
-        <div class="school">Faculty of Commerce &amp; Business Administration</div>
-        <span class="period">Graduated</span>
-        <div><span class="gpa"><i class="fas fa-graduation-cap"></i> Core Focus: IT Management &amp; Data Architectures</span></div>
-        <p class="activities">
-          Acquired institutional depth in system designs, database structures, business data communications, accounting paradigms, and financial auditing fundamentals.
-        </p>
-      </div>
-    </div>
-  </section>
-</div>
+<!-- DIVIDER -->
+<hr class="divider">
 
-<!-- CONTACT SECTION -->
+<!-- EDUCATION -->
+<section id="education">
+  <span class="section-label">Academic</span>
+  <h2 class="section-title">Education</h2>
+  <div class="edu-card">
+    <h3>Bachelor in Business Information Systems (BIS)</h3>
+    <div class="school">Helwan University</div>
+    <span class="period">2022 - 2026</span>
+    <div>
+      <span class="gpa"><i class="fas fa-star"></i> GPA: 3.4 / 4.0</span>
+    </div>
+    <p>Specialized curriculum focusing on the intersection of modern business management and advanced information technologies.</p>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<hr class="divider">
+
+<!-- CONTACT -->
 <section id="contact">
-  <span class="section-label">Get In Touch</span>
-  <h2 class="section-title">Let's Connect</h2>
+  <span class="section-label">Connect</span>
+  <h2 class="section-title">Contact Me</h2>
   <div class="contact-grid">
     <div class="contact-text">
-      <p>
-        I am currently looking for fresh career vectors within the fields of Data Analysis, IT Auditing, and Technical Operations. If you need a meticulous professional capable of managing data infrastructure and parsing complex financials, reach out right away!
-      </p>
-      <p>
-        Drop me an email, look through my technical journey over LinkedIn, or pull down my complete CV layout using the actions above.
-      </p>
+      <p>I'm always open to discussing new data analysis opportunities, Business Intelligence roles, or interesting projects. Feel free to reach out through any of the channels.</p>
     </div>
     <div class="contact-links">
-      
-      <a href="mailto:ahmed3bdelhamedwork@gmail.com" class="contact-link">
+      <a class="contact-link" href="mailto:ahmed3bdelhamedwork@gmail.com">
         <div class="icon-box"><i class="fas fa-envelope"></i></div>
         <div class="contact-info">
           <span class="cl-label">Email</span>
           <span class="cl-val">ahmed3bdelhamedwork@gmail.com</span>
         </div>
       </a>
-
-      <a href="https://www.linkedin.com/in/ahmed3bdelhamed/" target="_blank" class="contact-link">
+      <a class="contact-link" href="https://www.linkedin.com/in/ahmed3bdelhamed/" target="_blank">
         <div class="icon-box"><i class="fab fa-linkedin-in"></i></div>
         <div class="contact-info">
           <span class="cl-label">LinkedIn</span>
-          <span class="cl-val">linkedin.com/in/ahmed3bdelhamed</span>
+          <span class="cl-val">linkedin.com/in/ahmed3bdelhamed/</span>
         </div>
       </a>
-
     </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <p>&copy; 2026 Ahmed Abdelhamed. Powered by clean code &amp; continuous insights.</p>
+  <p>&copy; 2026 Ahmed Abdelhamed. Designed with care.</p>
 </footer>
 
 <script>
-  // Mobile Menu Interactive State Toggle
-  const mobileMenuBtn = document.getElementById('mobile-menu');
-  const navLinksMenu = document.getElementById('nav-menu');
+  // Mobile Menu Toggle
+  const mobileMenu = document.getElementById('mobile-menu');
+  const navMenu = document.getElementById('nav-menu');
 
-  mobileMenuBtn.addEventListener('click', () => {
-    navLinksMenu.classList.toggle('active');
+  mobileMenu.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
   });
 
-  // Smooth Scroll dynamic link closing logic
+  // Close mobile menu when a link is clicked
   document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
-      navLinksMenu.classList.remove('active');
+      navMenu.classList.remove('active');
     });
   });
 
-  // Linear Scroll Indicator Implementation
+  // Scroll Progress Bar
   window.addEventListener('scroll', () => {
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -420,6 +426,5 @@
     document.getElementById('scroll-progress').style.width = scrolled + '%';
   });
 </script>
-
 </body>
 </html>
