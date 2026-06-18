@@ -7,20 +7,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --accent: #00c2ff; --bg: #080d14; --text: #e2e8f0; }
-        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; display: flex; justify-content: center; }
+        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; padding: 20px; animation: fadeIn 1.2s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
         .container { max-width: 600px; width: 100%; }
         
-        .profile-card { background: rgba(255, 255, 255, 0.03); padding: 30px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1); text-align: center; margin-bottom: 20px; }
-        .profile-img { width: 130px; height: 130px; border-radius: 50%; border: 3px solid var(--accent); margin-bottom: 15px; object-fit: cover; }
+        /* Profile Animation */
+        .profile-card { background: rgba(255, 255, 255, 0.03); padding: 40px; border-radius: 25px; text-align: center; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.1); transition: 0.5s; }
+        .profile-card:hover { transform: translateY(-10px); border-color: var(--accent); }
+        .profile-img { width: 140px; height: 140px; border-radius: 50%; border: 4px solid var(--accent); margin-bottom: 20px; transition: 0.5s; }
+        .profile-img:hover { transform: scale(1.1) rotate(5deg); }
         
-        .card { background: rgba(255, 255, 255, 0.03); padding: 25px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 20px; }
-        .card h3 { color: var(--accent); margin-top: 0; display: flex; align-items: center; gap: 10px; font-size: 1.2rem; }
-        .card p { margin: 10px 0; font-size: 0.95rem; line-height: 1.5; }
+        /* Cards with Animation */
+        .card { background: rgba(255, 255, 255, 0.03); padding: 25px; border-radius: 20px; margin-bottom: 15px; border: 1px solid rgba(255, 255, 255, 0.05); transition: 0.4s; }
+        .card:hover { background: rgba(255,255,255,0.06); border-color: var(--accent); }
+        h3 { color: var(--accent); display: flex; align-items: center; gap: 10px; margin-top: 0; }
         
+        /* Buttons */
         .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .btn { padding: 14px; border-radius: 12px; text-decoration: none; text-align: center; font-weight: 600; border: 1px solid rgba(255,255,255,0.1); color: #fff; transition: 0.3s; }
-        .btn-main { grid-column: span 2; background: var(--accent); color: #000; border: none; }
-        .btn:hover { background: rgba(255,255,255,0.1); border-color: var(--accent); }
+        .btn { padding: 15px; border-radius: 15px; text-decoration: none; text-align: center; font-weight: 600; border: 1px solid var(--accent); color: var(--accent); transition: 0.3s; }
+        .btn:hover { background: var(--accent); color: #000; transform: scale(1.02); }
+        .btn-main { grid-column: span 2; background: var(--accent); color: #000; }
     </style>
 </head>
 <body>
@@ -29,29 +36,24 @@
     <div class="profile-card">
         <img src="me.jpg" alt="Ahmed Abdelhamed" class="profile-img">
         <h1>Ahmed Abdelhamed</h1>
-        <p style="color: var(--accent); font-weight: 600;">Data Analyst & Business Systems Professional</p>
+        <p style="color: var(--accent);">Data Analyst & Business Systems Professional</p>
     </div>
 
     <div class="card">
-        <h3><i class="fas fa-user"></i> Summary</h3>
-        <p>Professional in IT and Accounting with a background in data analysis and systems management. Certified in advanced credentials to deliver technical solutions and improve organizational performance.</p>
-    </div>
-
-    <div class="card">
-        <h3><i class="fas fa-briefcase"></i> Experience</h3>
-        <p><strong>Junior Accountant:</strong> Yasser Abdel Mageed Office (2025-2026)[cite: 1]</p>
-        <p><strong>Banker Internship:</strong> Banque Misr & CIB Egypt (2025-2026)[cite: 1]</p>
-        <p><strong>Financial Auditor:</strong> HMT Groups (2024-2025) - Reduced operational costs by 15%[cite: 1]</p>
+        <h3><i class="fas fa-briefcase"></i> Professional Experience</h3>
+        <p><strong>Junior Accountant:</strong> Yasser Abdel Mageed Office (2025-2026)</p>
+        <p><strong>Banker Internship:</strong> Banque Misr & CIB Egypt (2025-2026)</p>
+        <p><strong>Financial Auditor:</strong> HMT Groups (2024-2025) - Reduced operational costs by 15%</p>
     </div>
 
     <div class="card">
         <h3><i class="fas fa-graduation-cap"></i> Education</h3>
-        <p><strong>Business Information Systems</strong> | Future Academy (2027)[cite: 1]</p>
+        <p><strong>Business Information Systems</strong> | Future Academy (2027)</p>
         <p>Overall GPA: 3.12 (Very Good)[cite: 1]</p>
     </div>
 
     <div class="actions">
-        <a href="tel:+201116512028" class="btn"><i class="fas fa-phone"></i> Call Me</a>
+        <a href="tel:+201116512028" class="btn"><i class="fas fa-phone"></i> Call</a>
         <a href="mailto:ahmed3bdelhamedwork@gmail.com" class="btn"><i class="fas fa-envelope"></i> Email</a>
         <a href="cv.pdf" download class="btn btn-main"><i class="fas fa-download"></i> Download Full CV</a>
     </div>
